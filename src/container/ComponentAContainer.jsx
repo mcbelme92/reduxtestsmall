@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import ComponentA from "../components/ComponentA";
+
 import { increment } from "../redux/actions";
 
 const mapStateToProps = (state) => ({
@@ -11,9 +11,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 // Define el contenedor
-const ComponentAContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ComponentA);
+const ComponentAContainer = connect(mapStateToProps, mapDispatchToProps);
 
 export default ComponentAContainer; // Exporta el contenedor en lugar del componente ComponentA
