@@ -1,11 +1,12 @@
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import ComponentAContainer from "./container/ComponentAContainer";
 
-function App({ count, increment }) {
+function App(props) {
+  const { count, increment } = props;
+  console.log(count);
   return (
     <>
       <div>
@@ -18,7 +19,7 @@ function App({ count, increment }) {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={increment}>count is {count}</button>
+        <button onClick={() => increment(1)}>count is {count}</button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
@@ -26,7 +27,6 @@ function App({ count, increment }) {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <ComponentAContainer />
     </>
   );
 }
@@ -35,15 +35,7 @@ App.propTypes = {
   increment: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  count: state.counter,
-});
+/* App.displayName = "App"; */
 
-const mapDispatchToProps = (dispatch) => ({
-  increment: () => dispatch({ type: "INCREMENT" }),
-});
-
-App.displayName = "App";
-
-const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
+const ConnectedApp = ComponentAContainer(App);
 export default ConnectedApp;

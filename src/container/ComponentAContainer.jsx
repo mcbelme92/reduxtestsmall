@@ -3,13 +3,12 @@ import { connect } from "react-redux";
 import { increment } from "../redux/actions";
 
 const mapStateToProps = (state) => ({
-  count: state.counter,
+  count: state.count,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  increment: () => dispatch(increment()), // Dispatch la acción `increment`
+  increment: (amount) => dispatch(increment(amount)),
 });
-
 // Define el contenedor
 const ComponentAContainer = connect(mapStateToProps, mapDispatchToProps);
 

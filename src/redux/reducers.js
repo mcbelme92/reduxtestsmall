@@ -1,9 +1,13 @@
-//index de todos las acciones
-import { combineReducers } from "redux";
-import { counterReducer } from "./counterReducer";
+const initialState = {
+  count: 0,
+};
+const counterReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "INCREMENT":
+      return { ...state, count: state.count + action.payload };
+    default:
+      return state;
+  }
+};
 
-export const rootReducer = combineReducers({
-  counter: counterReducer,
-});
-
-export default rootReducer;
+export default counterReducer;
